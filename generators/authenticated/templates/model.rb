@@ -44,7 +44,7 @@ class <%= class_name %> < ActiveRecord::Base
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
-  # uff.  this is really an authorization, not authentication routine.  
+  # uff.  this is really an authorization, not authentication routine.
   # We really need a Dispatch Chain here or something.
   # This will also let us return a human error message.
   #
@@ -56,7 +56,7 @@ class <%= class_name %> < ActiveRecord::Base
   end
 
   protected
-    
+
 <% if options[:include_activation] -%>
     def make_activation_code
   <% if options[:stateful] -%>
