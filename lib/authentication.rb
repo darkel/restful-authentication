@@ -17,10 +17,10 @@ module Authentication
     RE_DOMAIN_TLD   = '(?:[A-Z]{2}|com|org|net|gov|mil|biz|info|mobi|name|aero|jobs|museum)'
     RE_EMAIL_OK     = /\A#{RE_EMAIL_NAME}@#{RE_DOMAIN_HEAD}#{RE_DOMAIN_TLD}\z/i
     MSG_EMAIL_BAD   = "should look like an email address."
-    
+
     CONSTANTS_DEFINED = 'yup' # sorry for the C idiom
   end
-  
+
   def self.included( recipient )
     recipient.extend( ModelClassMethods )
     recipient.class_eval do
@@ -34,9 +34,9 @@ module Authentication
     end
     def make_token
       secure_digest(Time.now, (1..10).map{ rand.to_s })
-    end 
+    end
   end # class methods
-  
+
   module ModelInstanceMethods
   end # instance methods
 

@@ -40,7 +40,7 @@ These best version of the release notes are in the notes/ directory in the
 "source code":http://github.com/technoweenie/restful-authentication/tree/master
 -- look there for the latest version.  The wiki versions are taken (manually)
 from there.
-  
+
 ***************************************************************************
 <a id="AWESOME"/> </a>
 h2. Exciting new features
@@ -54,7 +54,7 @@ extended from "Ben Mabey's.":http://www.benmabey.com/2008/02/04/rspec-plain-text
 h3. Modularize to match security design patterns:
 
 * Authentication (currently: password, browser cookie token, HTTP basic)
-* Trust metric (email validation) 
+* Trust metric (email validation)
 * Authorization (stateful roles)
 * Leave a flexible framework that will play nicely with other access control / policy definition / trust metric plugins
 
@@ -86,7 +86,7 @@ option or write a migration tool and submit it as a patch.  See the
 
 h3. Validations
 
-By default, 
+By default,
 
 ***************************************************************************
 <a id="INSTALL"/> </a>
@@ -130,7 +130,7 @@ To use:
   (make sure you "./script/generate rspec" after installing RSpec.)  The rspec
   and story suite are much more thorough than the rails tests, and changes are
   unlikely to be backported.
-  
+
 * --old-passwords: Use the older password scheme (see [[#COMPATIBILITY]], above)
 
 * --skip-migration: Don't generate a migration file for this model
@@ -151,24 +151,24 @@ alter to suit. There are additional security minutae in @notes/README-Tradeoffs@
      map.signup  '/signup', :controller => 'users',   :action => 'new' @
      map.login   '/login',  :controller => 'sessions', :action => 'new' @
      map.logout  '/logout', :controller => 'sessions', :action => 'destroy' @
-    
+
 * With @--include-activation@, also add to your @config/routes.rb@:
-  
-    map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil) 
-    
+
+    map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil)
+
   and add an observer to @config/environment.rb@:
-  
+
     config.active_record.observers = :users_observer
 
 * With @--stateful@, add an observer to config/environment.rb:
-  
+
     config.active_record.observers = :user_observer
-  
+
   and modify the users resource line to read
-  
+
     map.resources :users, :member => { :suspend   => :put,
                                        :unsuspend => :put,
-                                       :purge     => :delete } 
+                                       :purge     => :delete }
 
 * If you use a public repository for your code (such as github, rubyforge,
   gitorious, etc.) make sure to NOT post your site_keys.rb (add a line like
